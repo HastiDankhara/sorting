@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>quick</title>
+    <style>
+      body {
+        background-color: rgb(156, 156, 216);
+      }
+      h1 {
+        text-align: center;
+        margin-top: 15%;
+        margin-bottom: 3rem;
+      }
+      .container {
+        text-align: center;
+      }
+      h4 {
+        margin: 2rem;
+      }
+      span {
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>QUICK SORTING</h1>
+    <div class="container">
+      <h4>UNSORTED VALUE : <span class="unsorted"></span></h4>
+      <h4>SORTED VALUE : <span class="sort"></span></h4>
+    </div>
+    <script>
+      let a = [34, 65, 2, 7, 14, 76, 9];
+      let temp;
+      let low = 0;
+      let high = a.length - 1;
+      let unsort = document.querySelector(".unsorted");
+      let sort = document.querySelector(".sort");
+      unsort.innerText = a;
+      function partition(a, low, high) {
+        let storeI = a[low];
+        let i = low;
+        let j = high;
+        while (i < j) {
+          while (a[i] <= storeI && i <= high) {
+            i++;
+          }
+          while (a[j] >= storeI && j >= low) {
+            j--;
+          }
+          if (i < j) {
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+          }
+        }
+        temp = a[j];
+        a[j] = a[low];
+        a[low] = temp;
+        return j;
+      }
+      function quicksort(a, low, high) {
+        let index;
+        if (low < high) {
+          index = partition(a, low, high);
+          quicksort(a, low, index - 1);
+          quicksort(a, index + 1, high);
+        }
+      }
+      quicksort(a, low, high);
+      sort.innerText = a;
+    </script>
+  </body>
+</html>

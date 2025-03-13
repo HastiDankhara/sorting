@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>insertion</title>
+    <style>
+      body {
+        background-color: rgb(156, 156, 216);
+      }
+      h1 {
+        text-align: center;
+        margin-top: 15%;
+        margin-bottom: 3rem;
+      }
+      .container {
+        text-align: center;
+      }
+      h4 {
+        margin: 2rem;
+      }
+      span {
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>INSERTION SORTING</h1>
+    <div class="container">
+      <h4>UNSORTED VALUE : <span class="unsorted"></span></h4>
+      <h4>SORTED VALUE : <span class="sort"></span></h4>
+    </div>
+    <script>
+      let a = [34, 65, 2, 7, 14, 76, 9];
+      let storeI;
+      let j;
+      let unsort = document.querySelector(".unsorted");
+      let sort = document.querySelector(".sort");
+      unsort.innerText = a;
+      for (let i = 1; i < a.length; i++) {
+        storeI = a[i];
+        j = i - 1;
+        while (j >= 0 && a[j] > storeI) {
+          a[j + 1] = a[j];
+          j = j - 1;
+        }
+        a[j + 1] = storeI;
+      }
+      sort.innerText = a;
+    </script>
+  </body>
+</html>

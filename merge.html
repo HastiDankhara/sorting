@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>merge</title>
+    <style>
+      body {
+        background-color: rgb(156, 156, 216);
+      }
+      h1 {
+        text-align: center;
+        margin-top: 15%;
+        margin-bottom: 3rem;
+      }
+      .container {
+        text-align: center;
+      }
+      h4 {
+        margin: 2rem;
+      }
+      span {
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MERGE SORTING</h1>
+    <div class="container">
+      <h4>UNSORTED VALUE : <span class="unsorted"></span></h4>
+      <h4>SORTED VALUE : <span class="sort"></span></h4>
+    </div>
+    <script>
+      let a = [34, 65, 2, 7, 14, 76, 9];
+      let temp;
+      let low = 0;
+      let high = a.length - 1;
+      let unsort = document.querySelector(".unsorted");
+      let sort = document.querySelector(".sort");
+      unsort.innerText = a;
+      function mergesort(a, low, high) {
+        if (low < high) {
+          let mid = Math.floor((low + high) / 2);
+          mergesort(a, low, mid);
+          mergesort(a, mid + 1, high);
+          merge(a, low, mid, high);
+        }
+      }
+      function merge(a, low, mid, high) {
+        let i = low;
+        let j = mid + 1;
+        let temp = [];
+        while (i <= mid && j <= high) {
+          if (a[i] < a[j]) {
+            temp.push(a[i]);
+            i++;
+          } else {
+            temp.push(a[j]);
+            j++;
+          }
+        }
+        while (i <= mid) {
+          temp.push(a[i]);
+          i++;
+        }
+        while (j <= high) {
+          temp.push(a[j]);
+          j++;
+        }
+        for (let k = low; k <= high; k++) {
+          a[k] = temp[k - low];
+        }
+      }
+      mergesort(a, low, high);
+      sort.innerText = a;
+    </script>
+  </body>
+</html>

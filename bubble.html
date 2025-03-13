@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bubble</title>
+    <style>
+      body {
+        background-color: rgb(156, 156, 216);
+      }
+      h1 {
+        text-align: center;
+        margin-top: 15%;
+        margin-bottom: 3rem;
+      }
+      .container {
+        text-align: center;
+      }
+      h4 {
+        margin: 2rem;
+      }
+      span {
+        font-size: 22px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>BUBBLE SORTING</h1>
+    <div class="container">
+      <h4>UNSORTED VALUE : <span class="unsorted"></span></h4>
+      <h4>SORTED VALUE : <span class="sort"></span></h4>
+    </div>
+    <script>
+      let arr = [34, 65, 2, 7, 14, 76, 9];
+      let temp;
+      let unsort = document.querySelector(".unsorted");
+      let sort = document.querySelector(".sort");
+      unsort.innerText = arr;
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+          if (arr[j] > arr[j + 1]) {
+            temp = arr[j + 1];
+            arr[j + 1] = arr[j];
+            arr[j] = temp;
+          }
+        }
+      }
+      sort.innerText = arr;
+    </script>
+  </body>
+</html>
